@@ -1,6 +1,7 @@
 package com.aplana.chameleon.element;
 
 import com.aplana.chameleon.elements.selenium.WebElementFacade;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class TextInput extends WebElementFacade {
@@ -9,7 +10,9 @@ public class TextInput extends WebElementFacade {
     }
     @Override
     public String getPlaceholder() {
-        return "Поле обязательно для заполнения";
+
+        return getWrappedElement()
+                .findElement(By.xpath("./../following-sibling::*")).getText();
     }
     @Override
     public String getErrorMsg() {
